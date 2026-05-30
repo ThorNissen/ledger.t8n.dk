@@ -76,10 +76,13 @@ return [
     'widgets' => [
         'expenses_by_category' => 'Udgifter pr. kategori',
         'income_by_category' => 'Indkomst pr. kategori',
-        'filter_month' => 'Denne måned',
-        'filter_quarter' => 'Dette kvartal',
-        'filter_year' => 'Dette år',
-        'filter_all' => 'Hele perioden',
+        'filter_period' => 'Periode',
+        'filter_group_current' => 'Relativ',
+        'filter_group_years' => 'År',
+        'filter_this_month' => 'Denne måned',
+        'filter_last_month' => 'Sidste måned',
+        'filter_this_year' => 'Dette år',
+        'filter_last_year' => 'Sidste år',
     ],
 
 ];
