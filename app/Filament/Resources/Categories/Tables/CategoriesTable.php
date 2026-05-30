@@ -25,10 +25,12 @@ class CategoriesTable
                     ->width('40px'),
 
                 TextColumn::make('name')
+                    ->label(__('filament.categories.column_name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('group')
+                    ->label(__('filament.categories.column_group'))
                     ->badge()
                     ->sortable(),
 
@@ -42,6 +44,7 @@ class CategoriesTable
             ])
             ->filters([
                 SelectFilter::make('group')
+                    ->label(__('filament.categories.filter_group'))
                     ->options(CategoryGroupEnum::class),
             ])
             ->recordActions([

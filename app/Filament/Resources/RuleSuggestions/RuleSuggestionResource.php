@@ -16,6 +16,16 @@ class RuleSuggestionResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.rule_suggestions.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.rule_suggestions.plural_label');
+    }
+
     public static function table(Table $table): Table
     {
         return RuleSuggestionsTable::configure($table);

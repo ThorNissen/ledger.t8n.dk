@@ -18,6 +18,16 @@ class RuleResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.rules.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.rules.plural_label');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return RuleForm::configure($schema);

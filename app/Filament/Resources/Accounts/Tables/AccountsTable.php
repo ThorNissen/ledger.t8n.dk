@@ -30,18 +30,22 @@ class AccountsTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('filament.accounts.column_name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('bank_name')
+                    ->label(__('filament.accounts.column_bank_name'))
                     ->placeholder('—')
                     ->sortable(),
 
                 TextColumn::make('type')
+                    ->label(__('filament.accounts.column_type'))
                     ->badge()
                     ->sortable(),
 
                 TextColumn::make('currency')
+                    ->label(__('filament.accounts.column_currency'))
                     ->sortable(),
 
                 IconColumn::make('is_active')
@@ -50,6 +54,7 @@ class AccountsTable
             ])
             ->filters([
                 SelectFilter::make('type')
+                    ->label(__('filament.accounts.filter_type'))
                     ->options(AccountTypeEnum::class),
             ])
             ->recordActions([
@@ -57,7 +62,7 @@ class AccountsTable
                     ->label(__('filament.accounts.import_csv'))
                     ->icon(Heroicon::OutlinedArrowUpTray)
                     ->steps([
-                        Step::make('Upload')
+                        Step::make(__('filament.accounts.step_upload'))
                             ->description(__('filament.accounts.step_upload_description'))
                             ->schema([
                                 FileUpload::make('file')
@@ -72,7 +77,7 @@ class AccountsTable
                                     }),
                             ]),
 
-                        Step::make('Map Columns')
+                        Step::make(__('filament.accounts.step_map'))
                             ->description(__('filament.accounts.step_map_description'))
                             ->schema([
                                 Select::make('date_column')

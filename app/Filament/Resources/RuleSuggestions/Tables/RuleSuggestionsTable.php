@@ -27,10 +27,12 @@ class RuleSuggestionsTable
             ->defaultSort('occurrences', 'desc')
             ->columns([
                 TextColumn::make('pattern')
+                    ->label(__('filament.rule_suggestions.column_pattern'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('occurrences')
+                    ->label(__('filament.rule_suggestions.column_occurrences'))
                     ->sortable(),
 
                 TextColumn::make('suggestedTransactionType.name')

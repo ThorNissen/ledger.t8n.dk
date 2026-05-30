@@ -21,18 +21,22 @@ class TransactionsTable
             ->defaultSort('date', 'desc')
             ->columns([
                 TextColumn::make('date')
+                    ->label(__('filament.transactions.column_date'))
                     ->date('d/m/Y')
                     ->sortable(),
 
                 TextColumn::make('description')
+                    ->label(__('filament.transactions.column_description'))
                     ->searchable()
                     ->limit(40),
 
                 TextColumn::make('amount')
+                    ->label(__('filament.transactions.column_amount'))
                     ->money('DKK')
                     ->sortable(),
 
                 TextColumn::make('direction')
+                    ->label(__('filament.transactions.column_direction'))
                     ->badge()
                     ->sortable(),
 
@@ -51,6 +55,7 @@ class TransactionsTable
             ])
             ->filters([
                 SelectFilter::make('direction')
+                    ->label(__('filament.transactions.filter_direction'))
                     ->options(TransactionDirectionEnum::class),
 
                 SelectFilter::make('category')

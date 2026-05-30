@@ -18,6 +18,16 @@ class CategoryResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.categories.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.categories.plural_label');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return CategoryForm::configure($schema);

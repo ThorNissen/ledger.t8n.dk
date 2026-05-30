@@ -19,6 +19,7 @@ class TransactionTypesTable
             ->defaultSort('name')
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('filament.transaction_types.column_name'))
                     ->searchable()
                     ->sortable(),
 

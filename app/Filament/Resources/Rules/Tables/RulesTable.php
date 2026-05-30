@@ -20,6 +20,7 @@ class RulesTable
             ->defaultSort('priority')
             ->columns([
                 TextColumn::make('keyword')
+                    ->label(__('filament.rules.column_keyword'))
                     ->searchable()
                     ->sortable(),
 
@@ -32,6 +33,7 @@ class RulesTable
                     ->label(__('filament.rules.column_category')),
 
                 TextColumn::make('priority')
+                    ->label(__('filament.rules.column_priority'))
                     ->sortable(),
 
                 IconColumn::make('case_sensitive')

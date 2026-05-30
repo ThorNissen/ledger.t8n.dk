@@ -15,23 +15,28 @@ class AccountForm
         return $schema
             ->components([
                 TextInput::make('name')
+                    ->label(__('filament.accounts.field_name'))
                     ->required()
                     ->maxLength(255),
 
                 TextInput::make('bank_name')
+                    ->label(__('filament.accounts.field_bank_name'))
                     ->nullable()
                     ->maxLength(255),
 
                 Select::make('type')
+                    ->label(__('filament.accounts.field_type'))
                     ->options(AccountTypeEnum::class)
                     ->required(),
 
                 TextInput::make('currency')
+                    ->label(__('filament.accounts.field_currency'))
                     ->required()
                     ->default('DKK')
                     ->maxLength(10),
 
                 Toggle::make('is_active')
+                    ->label(__('filament.accounts.is_active'))
                     ->default(true),
             ]);
     }

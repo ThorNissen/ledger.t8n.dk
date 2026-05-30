@@ -20,6 +20,16 @@ class AccountResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getModelLabel(): string
+    {
+        return __('filament.accounts.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament.accounts.plural_label');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return AccountForm::configure($schema);
