@@ -20,9 +20,12 @@ class DatabaseSeeder extends Seeder
             TransactionTypeSeeder::class,
         ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        User::firstOrCreate(
+            ['email' => env('SEED_USER_EMAIL', 'test@example.com')],
+            [
+                'name' => env('SEED_USER_NAME', 'Test User'),
+                'password' => env('SEED_USER_PASSWORD', 'password'),
+            ]
+        );
     }
 }
