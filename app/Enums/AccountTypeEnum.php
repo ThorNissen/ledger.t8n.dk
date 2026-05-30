@@ -14,10 +14,10 @@ enum AccountTypeEnum: string implements HasLabel
     public function getLabel(): ?string
     {
         return match ($this) {
-            self::Checking => 'Checking',
-            self::Savings => 'Savings',
-            self::Cash => 'Cash',
-            self::CreditCard => 'Credit Card',
+            self::Checking => __('enums.checking'),
+            self::Savings => __('enums.savings'),
+            self::Cash => __('enums.cash'),
+            self::CreditCard => __('enums.credit_card'),
         };
     }
 }

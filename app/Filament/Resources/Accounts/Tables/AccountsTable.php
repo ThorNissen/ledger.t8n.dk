@@ -46,7 +46,7 @@ class AccountsTable
 
                 IconColumn::make('is_active')
                     ->boolean()
-                    ->label('Active'),
+                    ->label(__('filament.accounts.is_active')),
             ])
             ->filters([
                 SelectFilter::make('type')
@@ -54,14 +54,14 @@ class AccountsTable
             ])
             ->recordActions([
                 Action::make('importCsv')
-                    ->label('Import CSV')
+                    ->label(__('filament.accounts.import_csv'))
                     ->icon(Heroicon::OutlinedArrowUpTray)
                     ->steps([
                         Step::make('Upload')
-                            ->description('Upload your CSV transaction file')
+                            ->description(__('filament.accounts.step_upload_description'))
                             ->schema([
                                 FileUpload::make('file')
-                                    ->label('CSV File')
+                                    ->label(__('filament.accounts.field_csv_file'))
                                     ->disk('local')
                                     ->directory('imports')
                                     ->acceptedFileTypes(['text/csv', 'text/plain', 'application/csv'])
@@ -73,27 +73,27 @@ class AccountsTable
                             ]),
 
                         Step::make('Map Columns')
-                            ->description('Tell us which column is which')
+                            ->description(__('filament.accounts.step_map_description'))
                             ->schema([
                                 Select::make('date_column')
-                                    ->label('Date column')
+                                    ->label(__('filament.accounts.field_date_column'))
                                     ->options(fn (Get $get) => self::columnsAsOptions($get('csv_columns')))
                                     ->required(),
 
                                 Select::make('description_column')
-                                    ->label('Description column')
+                                    ->label(__('filament.accounts.field_description_column'))
                                     ->options(fn (Get $get) => self::columnsAsOptions($get('csv_columns')))
                                     ->required(),
 
                                 Select::make('amount_column')
-                                    ->label('Amount column')
+                                    ->label(__('filament.accounts.field_amount_column'))
                                     ->options(fn (Get $get) => self::columnsAsOptions($get('csv_columns')))
                                     ->required(),
 
                                 Select::make('external_id_column')
-                                    ->label('External ID column (optional)')
+                                    ->label(__('filament.accounts.field_external_id_column'))
                                     ->options(fn (Get $get) => self::columnsAsOptions($get('csv_columns')))
-                                    ->placeholder('Skip')
+                                    ->placeholder(__('filament.accounts.placeholder_skip'))
                                     ->nullable(),
                             ]),
                     ])
@@ -110,7 +110,7 @@ class AccountsTable
                             'external_id' => $data['external_id_column'] ?? null,
                         ]);
                     })
-                    ->successNotificationTitle('Import queued successfully'),
+                    ->successNotificationTitle(__('filament.accounts.import_queued')),
 
                 EditAction::make(),
             ])

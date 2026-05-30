@@ -18,19 +18,19 @@ class ListRules extends ListRecords
     {
         return [
             Action::make('recategorize')
-                ->label('Re-run Categorization')
+                ->label(__('filament.rules.recategorize_label'))
                 ->icon(Heroicon::OutlinedArrowPath)
                 ->color('gray')
                 ->requiresConfirmation()
-                ->modalHeading('Re-run Categorization')
-                ->modalDescription('This will apply all enabled rules to your uncategorized transactions. Already categorized transactions will not be changed.')
-                ->modalSubmitActionLabel('Run')
+                ->modalHeading(__('filament.rules.recategorize_heading'))
+                ->modalDescription(__('filament.rules.recategorize_description'))
+                ->modalSubmitActionLabel(__('filament.rules.recategorize_submit'))
                 ->action(function () {
                     CategorizeTransactionsJob::dispatch(auth()->id());
 
                     Notification::make()
-                        ->title('Categorization queued')
-                        ->body('Your transactions are being categorized in the background.')
+                        ->title(__('filament.rules.recategorize_queued_title'))
+                        ->body(__('filament.rules.recategorize_queued_body'))
                         ->success()
                         ->send();
                 }),

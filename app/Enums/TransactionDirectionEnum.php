@@ -14,9 +14,9 @@ enum TransactionDirectionEnum: string implements HasColor, HasLabel
     public function getLabel(): ?string
     {
         return match ($this) {
-            self::Income => 'Income',
-            self::Expense => 'Expense',
-            self::Transfer => 'Transfer',
+            self::Income => __('enums.income'),
+            self::Expense => __('enums.expense'),
+            self::Transfer => __('enums.transfer'),
         };
     }
 

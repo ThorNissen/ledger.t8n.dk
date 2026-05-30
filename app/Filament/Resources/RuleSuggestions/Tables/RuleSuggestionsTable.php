@@ -35,26 +35,26 @@ class RuleSuggestionsTable
                     ->sortable(),
 
                 TextColumn::make('suggestedTransactionType.name')
-                    ->label('Suggested Type')
+                    ->label(__('filament.rule_suggestions.column_suggested_type'))
                     ->placeholder('—'),
 
                 IconColumn::make('is_reviewed')
                     ->boolean()
-                    ->label('Reviewed'),
+                    ->label(__('filament.rule_suggestions.column_reviewed')),
 
                 IconColumn::make('is_accepted')
                     ->boolean()
-                    ->label('Accepted'),
+                    ->label(__('filament.rule_suggestions.column_accepted')),
             ])
             ->filters([
                 Filter::make('pending')
-                    ->label('Pending review')
+                    ->label(__('filament.rule_suggestions.filter_pending'))
                     ->default()
                     ->query(fn (Builder $query) => $query->where('is_reviewed', false)),
             ])
             ->recordActions([
                 Action::make('accept')
-                    ->label('Accept')
+                    ->label(__('filament.rule_suggestions.action_accept'))
                     ->icon(Heroicon::OutlinedCheck)
                     ->color('success')
                     ->hidden(fn (RuleSuggestion $record) => $record->is_reviewed)
@@ -65,10 +65,10 @@ class RuleSuggestionsTable
                     ->schema([
                         TextInput::make('keyword')
                             ->required()
-                            ->helperText('The keyword to match against transaction descriptions.'),
+                            ->helperText(__('filament.rule_suggestions.field_keyword_helper')),
 
                         Select::make('transaction_type_id')
-                            ->label('Transaction type')
+                            ->label(__('filament.rule_suggestions.field_transaction_type'))
                             ->relationship('suggestedTransactionType', 'name')
                             ->searchable()
                             ->preload()
@@ -91,14 +91,14 @@ class RuleSuggestionsTable
                         ]);
 
                         Notification::make()
-                            ->title('Rule created')
-                            ->body("Keyword \"{$data['keyword']}\" will now be categorized automatically.")
+                            ->title(__('filament.rule_suggestions.notification_rule_created_title'))
+                            ->body(__('filament.rule_suggestions.notification_rule_created_body', ['keyword' => $data['keyword']]))
                             ->success()
                             ->send();
                     }),
 
                 Action::make('reject')
-                    ->label('Reject')
+                    ->label(__('filament.rule_suggestions.action_reject'))
                     ->icon(Heroicon::OutlinedXMark)
                     ->color('danger')
                     ->hidden(fn (RuleSuggestion $record) => $record->is_reviewed)
@@ -112,11 +112,11 @@ class RuleSuggestionsTable
             ->toolbarActions([
                 BulkActionGroup::make([
                     BulkAction::make('bulk_accept')
-                        ->label('Accept selected')
+                        ->label(__('filament.rule_suggestions.action_bulk_accept'))
                         ->icon(Heroicon::OutlinedCheck)
                         ->color('success')
                         ->requiresConfirmation()
-                        ->modalDescription('A rule will be created for each selected suggestion using the suggested transaction type. Suggestions without a suggested type will be skipped.')
+                        ->modalDescription(__('filament.rule_suggestions.bulk_accept_description'))
                         ->action(function (Collection $records) {
                             $created = 0;
                             $skipped = 0;
@@ -142,7 +142,7 @@ class RuleSuggestionsTable
                             }
 
                             Notification::make()
-                                ->title("{$created} rule(s) created".($skipped ? ", {$skipped} skipped" : ''))
+                                ->title(trans_choice('filament.rule_suggestions.notification_bulk_created', $created, ['count' => $created]).($skipped ? __('filament.rule_suggestions.notification_bulk_skipped', ['count' => $skipped]) : ''))
                                 ->success()
                                 ->send();
                         }),

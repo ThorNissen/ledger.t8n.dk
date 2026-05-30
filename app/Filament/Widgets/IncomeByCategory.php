@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class IncomeByCategory extends ChartWidget
 {
-    protected ?string $heading = 'Income by Category';
+    protected ?string $heading = null;
 
     protected ?string $pollingInterval = null;
 
@@ -19,13 +19,18 @@ class IncomeByCategory extends ChartWidget
 
     public ?string $filter = 'all';
 
+    public function getHeading(): ?string
+    {
+        return __('filament.widgets.income_by_category');
+    }
+
     protected function getFilters(): ?array
     {
         return [
-            'month' => 'This month',
-            'quarter' => 'This quarter',
-            'year' => 'This year',
-            'all' => 'All time',
+            'month' => __('filament.widgets.filter_month'),
+            'quarter' => __('filament.widgets.filter_quarter'),
+            'year' => __('filament.widgets.filter_year'),
+            'all' => __('filament.widgets.filter_all'),
         ];
     }
 

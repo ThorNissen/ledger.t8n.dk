@@ -33,11 +33,11 @@ class CategoriesTable
 
                 TextColumn::make('transactionTypes_count')
                     ->counts('transactionTypes')
-                    ->label('Types'),
+                    ->label(__('filament.categories.column_types')),
 
                 IconColumn::make('is_system')
                     ->boolean()
-                    ->label('System'),
+                    ->label(__('filament.categories.column_system')),
             ])
             ->filters([
                 SelectFilter::make('group')

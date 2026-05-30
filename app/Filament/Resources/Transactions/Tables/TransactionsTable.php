@@ -37,16 +37,16 @@ class TransactionsTable
                     ->sortable(),
 
                 TextColumn::make('transactionType.name')
-                    ->label('Type')
-                    ->placeholder('Uncategorized')
+                    ->label(__('filament.transactions.column_type'))
+                    ->placeholder(__('filament.transactions.placeholder_uncategorized'))
                     ->searchable(),
 
                 TextColumn::make('transactionType.category.name')
-                    ->label('Category')
+                    ->label(__('filament.transactions.column_category'))
                     ->placeholder('—'),
 
                 TextColumn::make('account.name')
-                    ->label('Account')
+                    ->label(__('filament.transactions.column_account'))
                     ->placeholder('—'),
             ])
             ->filters([
@@ -55,20 +55,20 @@ class TransactionsTable
 
                 SelectFilter::make('category')
                     ->relationship('transactionType.category', 'name')
-                    ->label('Category'),
+                    ->label(__('filament.transactions.filter_category')),
 
                 SelectFilter::make('transaction_type_id')
                     ->relationship('transactionType', 'name')
-                    ->label('Type'),
+                    ->label(__('filament.transactions.filter_type')),
 
                 Filter::make('uncategorized')
-                    ->label('Uncategorized only')
+                    ->label(__('filament.transactions.filter_uncategorized'))
                     ->query(fn (Builder $query) => $query->whereNull('transaction_type_id')),
 
                 Filter::make('date_range')
                     ->form([
-                        DatePicker::make('from')->label('From'),
-                        DatePicker::make('until')->label('Until'),
+                        DatePicker::make('from')->label(__('filament.transactions.filter_from')),
+                        DatePicker::make('until')->label(__('filament.transactions.filter_until')),
                     ])
                     ->query(function (Builder $query, array $data) {
                         return $query

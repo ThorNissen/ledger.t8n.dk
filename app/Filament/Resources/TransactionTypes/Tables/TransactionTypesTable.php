@@ -22,21 +22,21 @@ class TransactionTypesTable
                     ->sortable(),
 
                 TextColumn::make('category.name')
-                    ->label('Category')
+                    ->label(__('filament.transaction_types.column_category'))
                     ->sortable(),
 
                 TextColumn::make('category.group')
-                    ->label('Group')
+                    ->label(__('filament.transaction_types.column_group'))
                     ->badge(),
 
                 IconColumn::make('is_system')
                     ->boolean()
-                    ->label('System'),
+                    ->label(__('filament.transaction_types.column_system')),
             ])
             ->filters([
                 SelectFilter::make('category_id')
                     ->relationship('category', 'name')
-                    ->label('Category'),
+                    ->label(__('filament.transaction_types.filter_category')),
             ])
             ->recordActions([
                 EditAction::make(),

@@ -17,13 +17,13 @@ enum CategoryGroupEnum: string implements HasLabel
     public function getLabel(): ?string
     {
         return match ($this) {
-            self::Income => 'Income',
-            self::HousingUtilities => 'Housing & Utilities',
-            self::Transport => 'Transport',
-            self::FoodGroceries => 'Food & Groceries',
-            self::PersonalCareHealth => 'Personal Care & Health',
-            self::Savings => 'Savings',
-            self::Miscellaneous => 'Miscellaneous',
+            self::Income => __('enums.income'),
+            self::HousingUtilities => __('enums.housing_utilities'),
+            self::Transport => __('enums.transport'),
+            self::FoodGroceries => __('enums.food_groceries'),
+            self::PersonalCareHealth => __('enums.personal_care_health'),
+            self::Savings => __('enums.savings'),
+            self::Miscellaneous => __('enums.miscellaneous'),
         };
     }
 }

@@ -23,27 +23,27 @@ class RulesTable
                     ->sortable(),
 
                 TextColumn::make('transactionType.name')
-                    ->label('Type')
+                    ->label(__('filament.rules.column_type'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('transactionType.category.name')
-                    ->label('Category'),
+                    ->label(__('filament.rules.column_category')),
 
                 TextColumn::make('priority')
                     ->sortable(),
 
                 IconColumn::make('case_sensitive')
                     ->boolean()
-                    ->label('Case'),
+                    ->label(__('filament.rules.column_case')),
 
                 IconColumn::make('is_enabled')
                     ->boolean()
-                    ->label('Enabled'),
+                    ->label(__('filament.rules.column_enabled')),
             ])
             ->filters([
                 Filter::make('enabled')
-                    ->label('Enabled only')
+                    ->label(__('filament.rules.filter_enabled'))
                     ->default()
                     ->query(fn (Builder $query) => $query->where('is_enabled', true)),
             ])
