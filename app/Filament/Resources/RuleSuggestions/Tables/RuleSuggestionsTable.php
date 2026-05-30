@@ -7,13 +7,12 @@ use App\Models\RuleSuggestion;
 use Filament\Actions\Action;
 use Filament\Actions\BulkAction;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
@@ -37,14 +36,6 @@ class RuleSuggestionsTable
                 TextColumn::make('suggestedTransactionType.name')
                     ->label(__('filament.rule_suggestions.column_suggested_type'))
                     ->placeholder('—'),
-
-                IconColumn::make('is_reviewed')
-                    ->boolean()
-                    ->label(__('filament.rule_suggestions.column_reviewed')),
-
-                IconColumn::make('is_accepted')
-                    ->boolean()
-                    ->label(__('filament.rule_suggestions.column_accepted')),
             ])
             ->filters([
                 Filter::make('pending')
@@ -107,7 +98,7 @@ class RuleSuggestionsTable
                         $record->update(['is_reviewed' => true, 'is_accepted' => false]);
                     }),
 
-                EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
