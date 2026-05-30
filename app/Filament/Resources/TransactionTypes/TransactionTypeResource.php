@@ -2,8 +2,6 @@
 
 namespace App\Filament\Resources\TransactionTypes;
 
-use App\Filament\Resources\TransactionTypes\Pages\CreateTransactionType;
-use App\Filament\Resources\TransactionTypes\Pages\EditTransactionType;
 use App\Filament\Resources\TransactionTypes\Pages\ListTransactionTypes;
 use App\Filament\Resources\TransactionTypes\Schemas\TransactionTypeForm;
 use App\Filament\Resources\TransactionTypes\Tables\TransactionTypesTable;
@@ -41,8 +39,6 @@ class TransactionTypeResource extends Resource
     {
         return [
             'index' => ListTransactionTypes::route('/'),
-            'create' => CreateTransactionType::route('/create'),
-            'edit' => EditTransactionType::route('/{record}/edit'),
         ];
     }
 }

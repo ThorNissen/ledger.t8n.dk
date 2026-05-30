@@ -2,8 +2,6 @@
 
 namespace App\Filament\Resources\Rules;
 
-use App\Filament\Resources\Rules\Pages\CreateRule;
-use App\Filament\Resources\Rules\Pages\EditRule;
 use App\Filament\Resources\Rules\Pages\ListRules;
 use App\Filament\Resources\Rules\Schemas\RuleForm;
 use App\Filament\Resources\Rules\Tables\RulesTable;
@@ -41,8 +39,6 @@ class RuleResource extends Resource
     {
         return [
             'index' => ListRules::route('/'),
-            'create' => CreateRule::route('/create'),
-            'edit' => EditRule::route('/{record}/edit'),
         ];
     }
 }
