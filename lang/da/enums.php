@@ -9,10 +9,12 @@ return [
     'savings' => 'Opsparing',
     'cash' => 'Kontanter',
     'credit_card' => 'Kreditkort',
-    'housing_utilities' => 'Bolig & Forsyning',
+    'housing_utilities' => 'Bolig & Forsyninger',
     'transport' => 'Transport',
-    'food_groceries' => 'Mad & Dagligvarer',
-    'personal_care_health' => 'Personlig pleje & Helbred',
+    'food_groceries' => 'Mad & Dagligvare',
+    'other_fixed' => 'Andre faste',
+    'personal_care_health' => 'Personlig pleje & Sundhed',
     'miscellaneous' => 'Diverse',
+    'internal_transfers' => 'Interne overførsler',
 
 ];
