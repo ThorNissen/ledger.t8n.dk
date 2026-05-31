@@ -51,7 +51,7 @@ class TransactionImportService
                 $amount = (float) str_replace([',', ' '], ['.', ''], $mapped['amount']);
                 $direction = $amount < 0 ? TransactionDirectionEnum::Expense : TransactionDirectionEnum::Income;
 
-                Transaction::firstOrCreate(
+                $transaction = Transaction::firstOrCreate(
                     [
                         'user_id' => $userId,
                         'external_id' => $mapped['external_id'] ?? null,
@@ -66,7 +66,9 @@ class TransactionImportService
                     ]
                 );
 
-                $imported++;
+                if ($transaction->wasRecentlyCreated) {
+                    $imported++;
+                }
             }
 
             fclose($handle);
