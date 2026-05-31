@@ -27,5 +27,9 @@ class ProcessImportJob implements ShouldQueue
         $account = Account::findOrFail($this->accountId);
 
         $importer->importFromCsv($this->filePath, $account, $this->columnMap);
+
+        if (file_exists($this->filePath)) {
+            unlink($this->filePath);
+        }
     }
 }
