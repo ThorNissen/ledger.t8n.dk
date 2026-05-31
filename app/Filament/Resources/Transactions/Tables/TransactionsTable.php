@@ -68,7 +68,8 @@ class TransactionsTable
 
                 Filter::make('uncategorized')
                     ->label(__('filament.transactions.filter_uncategorized'))
-                    ->query(fn (Builder $query) => $query->whereNull('transaction_type_id')),
+                    ->query(fn (Builder $query) => $query->whereNull('transaction_type_id'))
+                    ->default(),
 
                 Filter::make('date_range')
                     ->form([
